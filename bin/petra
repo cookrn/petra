@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+Petra::CLI.start( ARGV.dup )
+
+BEGIN {
+  begin
+    has_retried = false
+    require 'petra/cli'
+  rescue LoadError => e
+    raise e if has_retried
+    libpath = File.expand_path "#{ __FILE__ }/../../lib"
+    $LOAD_PATH.unshift libpath
+    has_retried = true
+    retry
+  end
+}
