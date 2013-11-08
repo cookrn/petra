@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Petra::VERSION
   spec.authors       = ["Ryan Cook"]
   spec.email         = ["cookrn@gmail.com"]
-  spec.description   = %q{A toolkit for managing Ansible projects.}
+  spec.description   = %q{A toolkit for managing Ansible/Vagrant projects.}
   spec.summary       = "#{ spec.name } v#{ spec.version }"
   spec.homepage      = "https://github.com/cookrn/petra"
   spec.license       = "MIT"

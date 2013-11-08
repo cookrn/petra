@@ -1,6 +1,6 @@
 # Petra
 
-A toolkit for managing Ansible projects.
+A toolkit for managing Ansible/Vagrant projects.
 
 ## Installation
 
