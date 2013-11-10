@@ -1,0 +1,17 @@
+App.machine_configs.register '<%= machine_name %>' do | base_config |
+  base_config.vm.define :<%= machine_name %> do | config |
+    config.vm.hostname = '<%= machine_name %>'
+
+    config.vm.network \
+      :forwarded_port,
+      :guest => 22,
+      :host  => App.seeds[ '<%= machine_name %>' ][ 'ansible_ssh_port' ]
+
+    config.vm.provision :ansible do | ansible |
+      ansible.extra_vars     = App.seeds[ '<%= machine_name %>' ]
+      ansible.inventory_file = 'hosts/local.hosts'
+      ansible.playbook       = '<%= machine_name %>.yml'
+      ansible.verbose        = true
+    end
+  end
+end

@@ -1,0 +1,5 @@
+---
+- name: <%= machine_name %> machine playbook
+  hosts: all
+  roles:
+    - common

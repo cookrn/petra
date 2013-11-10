@@ -16,6 +16,12 @@ module Petra
         'new <name>',
         'Create a new Ansible project named <name>'
 
+      method_option \
+        :machine_name,
+        :aliases  => '-m',
+        :default  => 'default',
+        :required => false
+
       def new( project_name )
         @project_name ||= project_name
 
@@ -25,6 +31,10 @@ module Petra
       end
 
       no_commands do
+        def machine_name
+          options.machine_name
+        end
+
         def petra_version
           Petra::VERSION
         end
