@@ -26,7 +26,7 @@ module Petra
         @project_name ||= project_name
 
         directory \
-          'ansible_project',
+          'new_project',
           project_name
       end
 
