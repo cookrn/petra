@@ -1,12 +1,7 @@
-require 'petra/cli/subcommand'
-
 module Petra
   class CLI
     Subcommand :Project do
       attr_reader :project_name
-
-      include Thor::Actions
-      source_root "#{ LIBPATH }/sources"
 
       command_description 'Manage & build projects'
       command_invocation  'project'
@@ -14,29 +9,45 @@ module Petra
 
       desc \
         'new <name>',
-        'Create a new Ansible project named <name>'
+        'Create a new Petra project named <name>'
 
-      method_option \
+      option \
         :machine_name,
         :aliases  => '-m',
         :default  => 'default',
-        :required => false
+        :desc     => 'The name of the first machine in the project.'
 
       def new( project_name )
         @project_name ||= project_name
 
-        directory \
-          'new_project',
-          project_name
+        template_new_project_directory!
+
+        inside project_name do
+          invoke_new_machine!
+        end
       end
 
       no_commands do
+        def invoke_new_machine!
+          invoke \
+            Machine,
+            :new,
+            [ machine_name ],
+            Hash.new
+        end
+
         def machine_name
           options.machine_name
         end
 
         def petra_version
           Petra::VERSION
+        end
+
+        def template_new_project_directory!
+          directory \
+            'project/new',
+            project_name
         end
       end
     end

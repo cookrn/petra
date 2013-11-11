@@ -9,7 +9,7 @@
 # secret values. See the example key `super_secret_key` included
 # in the Hash below.
 
-App.seeds[ '<%= machine_name %>' ] =
+App.seeds[ '<%= seed_name %>' ] =
   {
     'ansible_ssh_port'             => 42000,
     'ansible_ssh_private_key_file' => '~/.vagrant.d/insecure_private_key',
