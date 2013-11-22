@@ -2,6 +2,13 @@
 
 A toolkit for managing Ansible/Vagrant projects.
 
+## Requirements
+
+The following should be installed prior to using Petra:
+
+* Ansible ~> 1.3
+* Vagrant ~> 1.3
+
 ## Installation
 
 Run the following command on your shell to install the gem, including
