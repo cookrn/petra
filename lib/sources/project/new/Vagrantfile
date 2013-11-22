@@ -16,5 +16,6 @@ Vagrant.configure( '2' ) do | config |
     ]
   end
 
+  App.load_seeds!
   App.load_machines! config
 end

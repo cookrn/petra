@@ -26,7 +26,21 @@ module App
   end
 
   self.machine_configs = Hashy.new
+  self.seeds           = Hashy.new
+
   self.root = File.expand_path "#{ __FILE__ }/../.."
+
+  def load_seed!( seed )
+    seed_name = seed.split( '/' ).last.split( '.' ).first
+    data = YAML.load_file seed
+    seeds[ seed_name ] = data
+  end
+
+  def load_seeds!
+    Dir[ "#{ root }/seeds/**/**.seed.yml" ].each do | seed |
+      load_seed! seed
+    end
+  end
 
   def load_machines!( config )
     Dir[ "#{ root }/machines/**/**.vagrant.rb" ].each do | machine |
