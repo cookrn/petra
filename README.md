@@ -37,6 +37,17 @@ When you're ready, `cd` into your project and run `vagrant up`.
 
 That's all for now :)
 
+## Goals
+
+* Function as a Vagrant plugin for usage with `vagrant plugin install petra`
+* Know if operating within Bundler and installed Vagrant Ruby environment
+* Automatically install plugin on project install with CLI option
+* Provide a Rails style boot operational interface (a la initializers)
+* Provide class based DSL for machine definitions
+* Provide class based DSL for configuration management database models
+* CLI helper for booting machines
+* CLI helper for running playbooks
+
 ## Contributing
 
 1. Fork it
