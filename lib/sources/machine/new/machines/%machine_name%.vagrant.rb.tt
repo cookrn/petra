@@ -8,8 +8,8 @@ App.machine_configs.register '<%= machine_name %>' do | base_config |
       :host  => App.seeds[ '<%= machine_name %>' ][ 'ansible_ssh_port' ]
 
     config.vm.provision :ansible do | ansible |
-      ansible.extra_vars     = App.seeds[ '<%= machine_name %>' ]
-      ansible.inventory_file = 'hosts/local.hosts'
+      ansible.raw_arguments  = '--extra-vars=@seeds/<%= machine_name %>.seed.yml'
+      ansible.inventory_path = 'hosts/local.hosts'
       ansible.playbook       = '<%= machine_name %>.yml'
       ansible.verbose        = true
     end

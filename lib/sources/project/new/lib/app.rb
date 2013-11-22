@@ -1,3 +1,5 @@
+require 'yaml'
+
 module App
   extend self
 
@@ -24,15 +26,7 @@ module App
   end
 
   self.machine_configs = Hashy.new
-  self.seeds           = Hashy.new
-
-  self.root = File.expand_path File.join( File.dirname( __FILE__ ) , '..' )
-
-  def load_seeds!
-    Dir[ "#{ root }/seeds/**/**.seed.rb" ].each do | seed |
-      load seed
-    end
-  end
+  self.root = File.expand_path "#{ __FILE__ }/../.."
 
   def load_machines!( config )
     Dir[ "#{ root }/machines/**/**.vagrant.rb" ].each do | machine |

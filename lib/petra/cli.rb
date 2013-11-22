@@ -15,15 +15,11 @@ module Petra
 
     def new( project_name )
       invoke \
-        Project,
-        :new
+        Generate,
+        :project
     end
   end
 end
 
 require 'petra/cli/subcommand'
-
-require 'petra/cli/machine'
-require 'petra/cli/playbook'
-require 'petra/cli/project'
-require 'petra/cli/seed'
+require 'petra/cli/generate'
