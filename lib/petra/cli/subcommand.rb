@@ -1,4 +1,3 @@
-require 'fattr'
 require 'petra/patches/thor'
 
 module Petra
@@ -6,12 +5,27 @@ module Petra
     class Subcommand < Thor
       include Thor::Actions
 
-      Fattr :command_description
-      Fattr :command_invocation
-      Fattr :command_usage
+      module ClassMethods
+        %w(
+          description
+          invocation
+          usage
+        ).each do | attr |
+          module_eval <<-___ , __FILE__ , __LINE__
+            def command_#{ attr }( val = nil )
+              if val
+                @_command_#{ attr } ||= val
+              end
+
+              @_command_#{ attr }
+            end
+          ___
+        end
+      end
 
       def self.inherited( klass )
         klass.source_root "#{ LIBPATH }/sources"
+        klass.extend ClassMethods
       end
     end
 
