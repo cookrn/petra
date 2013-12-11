@@ -1,0 +1,6 @@
+require File.expand_path( '../boot' , __FILE__ )
+
+module <%= application_module_name %>
+  class Application < Petra::Application
+  end
+end

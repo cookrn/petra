@@ -21,5 +21,4 @@ module Petra
   end
 end
 
-require 'petra/cli/subcommand'
 require 'petra/cli/generate'

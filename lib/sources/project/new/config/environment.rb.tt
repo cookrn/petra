@@ -1,0 +1,5 @@
+# require config/application
+# initialize application
+
+require File.expand_path( '../application' , __FILE__ )
+<%= application_module_name %>::Application.initialize!

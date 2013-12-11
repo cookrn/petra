@@ -1,3 +1,5 @@
+require 'petra/cli/subcommand'
+
 module Petra
   class CLI
     Subcommand :Generate do
@@ -49,6 +51,11 @@ module Petra
         template_new_project_directory!
 
         inside project_name do
+          inside 'vendor' do
+            # FIXME only if in development i.e. CLI option present
+            link_petra!
+          end
+
           invoke_new_machine!
         end
       end
@@ -63,6 +70,10 @@ module Petra
       end
 
       no_commands do
+        def application_module_name
+          to_const_name project_name
+        end
+
         def invoke_new_playbook!
           invoke \
             Generate,
@@ -85,12 +96,20 @@ module Petra
             Hash.new
         end
 
+        def link_petra!
+          run "ln -s #{ root_path } petra-link"
+        end
+
         def machine_name
           @machine_name or options.machine_name
         end
 
         def petra_version
           Petra::VERSION
+        end
+
+        def root_path
+          Petra::ROOTPATH
         end
 
         def template_new_machine!
@@ -119,6 +138,10 @@ module Petra
           directory \
             'seed/new',
             '.'
+        end
+
+        def to_const_name( str )
+          str.to_s.split( /\W/ ).map( &:capitalize ).join
         end
       end
     end
