@@ -1,9 +1,0 @@
-/.bundle
-/.vagrant
-/.venv
-
-/seeds/*.seed.rb
-/vendor/bundle
-
-*.crt
-*.key

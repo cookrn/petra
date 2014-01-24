@@ -1,6 +1,0 @@
-# <%= project_name %>
-
-TODO: Write documentation about your infrastructure
-
-------------------------
-Generated Using [Petra](https://github.com/cookrn/petra) v<%= petra_version %>
