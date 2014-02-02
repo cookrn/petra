@@ -13,6 +13,12 @@ class PetraTest < Minitest::Test
       Petra::LIBPATH
   end
 
+  def test_has_a_playbook_factory
+    assert_respond_to \
+      Petra,
+      :playbook
+  end
+
   private
 
   def gem_root
@@ -20,7 +26,7 @@ class PetraTest < Minitest::Test
       File.expand_path \
         File.join(
           __FILE__,
-          '../../'
+          '../../../'
         )
   end
 
