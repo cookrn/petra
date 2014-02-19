@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/cookrn/petra.png)](https://travis-ci.org/cookrn/petra)
 [![Code Climate](https://codeclimate.com/github/cookrn/petra.png)](https://codeclimate.com/github/cookrn/petra)
 [![Coverage Status](https://coveralls.io/repos/cookrn/petra/badge.png)](https://coveralls.io/r/cookrn/petra)
+[![Dependency Status](https://gemnasium.com/cookrn/petra.png)](https://gemnasium.com/cookrn/petra)
 
 A toolkit for interacting with Ansible from Ruby
 
